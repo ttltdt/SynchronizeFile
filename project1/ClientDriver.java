@@ -13,7 +13,9 @@ public class ClientDriver {
         //prompt the user
         System.out.println("Enter the absolute path of the folder you want to be synchronized: ");
         String inputString = sc.nextLine();
-        
+        System.out.println("Enter the IP address of the server: ");
+        String IP = sc.nextLine();
+
         Path homeDir = Paths.get(inputString); // home directory
         
         //we keep log files to check if any files has been changed since last check
@@ -29,7 +31,7 @@ public class ClientDriver {
         }
         sc1.closeFile();
 
-        fileClient.createSocket(); // connect to server
+        fileClient.createSocket(IP); // connect to server
 
         try {
             fileClient.buildDirectory(fileLog); // send directory structure

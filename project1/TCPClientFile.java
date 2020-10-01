@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 public class TCPClientFile {
     private Socket socket = null;
     private DataOutputStream outStream = null;
-    private final String serverIPAddress = "127.0.0.1";
+    private String serverIPAddress = "127.0.0.1";
     private final int port = 3339;
     private static ObjectInputStream input; // inputs data to read info
 
@@ -27,9 +27,10 @@ public class TCPClientFile {
     /**
      * Create a socket to connect to server
      */
-    public void createSocket() {
+    public void createSocket(String IP) {
         try {
             // connect to localHost at given port #
+            serverIPAddress = IP;
             socket = new Socket(serverIPAddress, port);
 
             System.out.println("Connected");
